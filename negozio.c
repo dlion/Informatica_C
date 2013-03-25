@@ -74,7 +74,7 @@ articolo* vendi(articolo*,int,float*);
 int main()
 {
     articolo *db=NULL;
-    int num = 0,scelta,codice,i;
+    int num = 0,scelta;
     float guadagno = 0;
 
     do
