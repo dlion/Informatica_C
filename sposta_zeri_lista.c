@@ -42,14 +42,12 @@ lista* sposta(lista *p)
     lista *temp=NULL;
     int conto = 0;
     
-    while(p != NULL)
+    for(p; p != NULL; p = p->next)
     {
         if(p->num != 0)
-            temp = ins_coda(temp,p->num);
+            temp = ins_coda(temp,p->num);                                                                          
         else
             conto++;
-
-        p = p->next;
     }
 
     for(conto; conto > 0; conto--)
