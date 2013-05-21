@@ -8,7 +8,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-int binary_search(char carattere,char *vett)
+enum RIS {FALSE,TRUE};
+
+enum RIS binary_search(char carattere,char *vett)
 {
     int dim = strlen(vett);
     int inizio=0,fine=dim-1,medio;
@@ -18,7 +20,7 @@ int binary_search(char carattere,char *vett)
         medio = (inizio+fine)/2;
 
         if(vett[medio] == carattere)
-            return 1;
+            return TRUE;
 
         if(vett[medio] < carattere)
             inizio = medio+1;
@@ -26,19 +28,19 @@ int binary_search(char carattere,char *vett)
             fine = medio-1;
     }
 
-    return 0;
+    return FALSE;
 }
 
 
-int cerca(char *str, char *vett)
+enum RIS cerca(char *str, char *vett)
 {
     int i;
 
     for(i=0; i < strlen(str); i++)
-        if(binary_search(str[i],vett) == 0)
-            return 0;
+        if(binary_search(str[i],vett) == FALSE)
+            return FALSE;
 
-    return 1;
+    return TRUE;
 }
 
 int main()
@@ -49,12 +51,10 @@ int main()
     printf("\nInserisci la stringa: ");
     scanf("%s",stringa);
 
-    if(cerca(stringa,vettore) == 1)
-        puts("VERISSIMO");
+    if(cerca(stringa,vettore) == TRUE)
+        puts("VERO");
     else
-        puts("FALSISSIMO");
+        puts("FALSO");
 
     return 0;
 }
-
-
